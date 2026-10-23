@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ytsteal settings</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../icons/icon-128.png" alt="" width="40" height="40">
+    <div>
+      <h1>Ytsteal settings</h1>
+      <p class="muted">Changes save automatically.</p>
+    </div>
+    <span id="saved" class="saved" aria-live="polite"></span>
+  </header>
+
+  <section class="card">
+    <h2>Where files go</h2>
+    <label class="field">Download folder
+      <div class="inline">
+        <input id="outputDir" data-key="outputDir" placeholder="Downloads\Ytsteal (default)" spellcheck="false">
+        <button id="browse" class="btn">Choose…</button>
+      </div>
+    </label>
+    <div class="row">
+      <small class="muted" id="folderNote"></small>
+      <span class="spacer"></span>
+      <button id="resetFolder" class="link">Use the default folder</button>
+      <button id="openFolder" class="link">Open folder</button>
+    </div>
+    <label class="field">Save each download into
+      <select data-key="subfolder"><option value="none">The download folder</option><option value="channel">A folder per channel</option></select>
+    </label>
+    <label class="field">File name
+      <select data-key="naming" id="naming"></select>
+    </label>
+  </section>
+
+  <section class="card">
+    <h2>Video</h2>
+    <div class="grid">
+      <label class="field">Format <select data-key="videoFormat" id="videoFormat"></select></label>
+      <label class="field">Quality <select data-key="videoQuality" id="videoQuality"></select></label>
+    </div>
+    <p class="muted small">MP4 plays on almost every device. Higher qualities take longer and use more space.</p>
+  </section>
+
+  <section class="card">
+    <h2>Audio only</h2>
+    <div class="grid">
+      <label class="field">Format <select data-key="audioFormat" id="audioFormat"></select></label>
+      <label class="field">Bitrate <select data-key="audioQuality" id="audioQuality"></select></label>
+    </div>
+    <p class="muted small">MP3 works everywhere. FLAC and WAV are lossless but much bigger.</p>
+  </section>
+
+  <section class="card">
+    <h2>Extras</h2>
+    <label class="field">Subtitles <select data-key="subtitles" id="subtitles"></select></label>
+    <label class="check"><input type="checkbox" data-key="embedThumbnail"> Put the video's thumbnail inside the file as cover art</label>
+    <label class="check"><input type="checkbox" data-key="saveThumbnail"> Also save the thumbnail as a .jpg next to the video</label>
+    <label class="check"><input type="checkbox" data-key="sponsorBlock"> Cut out sponsor and self-promotion segments (SponsorBlock)</label>
+  </section>
+
+  <section class="card">
+    <h2>Speed and sign-in</h2>
+    <label class="field">Use my browser sign-in <small class="muted">for age-restricted or members-only videos</small>
+      <select data-key="cookies" id="cookies"></select>
+    </label>
+    <p class="muted small">This reads the sign-in cookies from the browser you choose. Keep it off unless you need it. It may fail with the newest Chrome versions.</p>
+    <label class="field">Downloads at once
+      <select data-key="concurrency"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+    </label>
+    <label class="field">Speed limit <select data-key="rateLimit" id="rateLimit"></select></label>
+    <label class="check"><input type="checkbox" data-key="notifications"> Show a notification when a download finishes</label>
+  </section>
+
+  <section class="card">
+    <h2>Keyboard shortcuts</h2>
+    <ul id="shortcuts" class="list"></ul>
+    <p class="muted small">Press a shortcut on any YouTube video to download it. You can change the keys on the shortcuts page.</p>
+    <button id="openShortcuts" class="btn">Change shortcuts</button>
+  </section>
+
+  <section class="card">
+    <h2>Engine</h2>
+    <p class="muted small">Ytsteal uses yt-dlp to fetch videos. It updates itself once a week. YouTube changes often, so if downloads start failing, update it.</p>
+    <dl id="engine" class="kv"></dl>
+    <div class="row">
+      <button id="updateEngine" class="btn primary">Update engine now</button>
+      <button id="recheck" class="btn">Check again</button>
+    </div>
+    <p id="engineMsg" class="msg" aria-live="polite"></p>
+  </section>
+
+  <section class="card danger">
+    <h2>Reset</h2>
+    <p class="muted small">Put every setting back to what it was when you installed Ytsteal. Your files are not touched.</p>
+    <button id="reset" class="btn">Reset all settings</button>
+  </section>
+</div>
+
+<script src="../lib/common.js"></script>
+<script src="options.js"></script>
+</body>
+</html>
